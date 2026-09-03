@@ -6,7 +6,6 @@ import UserList from "./components/UserList";
 
 import "./App.css";
 
-const API_URL = "http://localhost:8000/api/users";
 
 function App() {
  const [users, setUsers] = useState([]);
@@ -29,7 +28,7 @@ function App() {
     try {
       setLoading(true);
 
-      const response = await fetch(API_URL);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch users");
@@ -73,8 +72,8 @@ function App() {
 
     try {
       const url = editingUser
-        ? `${API_URL}/${editingUser._id}`
-        : API_URL;
+        ? `${import.meta.env.VITE_API_URL}/${editingUser._id}`
+        : `${import.meta.env.VITE_API_URL}/users`;
 
       const method = editingUser ? "PUT" : "POST";
 
@@ -141,7 +140,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
         method: "DELETE",
       });
 
