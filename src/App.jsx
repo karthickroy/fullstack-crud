@@ -72,7 +72,7 @@ function App() {
 
     try {
       const url = editingUser
-        ? `${import.meta.env.VITE_API_URL}/${editingUser._id}`
+        ? `${import.meta.env.VITE_API_URL}/users/${editingUser._id}`
         : `${import.meta.env.VITE_API_URL}/users`;
 
       const method = editingUser ? "PUT" : "POST";
@@ -140,7 +140,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
         method: "DELETE",
       });
 
